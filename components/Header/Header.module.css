@@ -1,0 +1,134 @@
+.header {
+    padding-top: 20px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-black);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+}
+
+.heart {
+    width: 14px;
+    height: 12px;
+    margin: 0 1px;
+    color: var(--color-yellow);
+    flex-shrink: 0;
+}
+
+.navigation,
+.auth {
+    display: none;
+}
+
+.menuButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.menuIcon {
+    width: 32px;
+    height: 32px;
+    color: var(--color-black);
+}
+
+.menuButton:focus-visible,
+.logo:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+}
+
+
+.homeHeader {
+    padding-top: 28px;
+}
+
+.homeHeader .logo,
+.homeHeader .menuIcon,
+.homeHeader .heart {
+    color: var(--color-white);
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+    .logo {
+        font-size: 28px;
+    }
+
+    .heart {
+        width: 19px;
+        height: 17px;
+    }
+
+    .auth {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 16px;
+    }
+
+    .menuButton {
+        width: 36px;
+        height: 36px;
+    }
+
+    .menuIcon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .homeHeader {
+        padding-top: 20px;
+    }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1280px) {
+    .header {
+        padding-top: 32px;
+    }
+
+    .container {
+        position: relative;
+        padding-left: 64px;
+        padding-right: 64px;
+    }
+
+    .navigation {
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-left: 0;
+    }
+
+    .auth {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .menuButton {
+        display: none;
+    }
+
+    .homeHeader {
+        padding-top: 32px;
+    }
+}

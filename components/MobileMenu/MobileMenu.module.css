@@ -1,0 +1,88 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 218px;
+    height: 100%;
+    height: 100dvh;
+    padding: 28px 20px 40px;
+    overflow-y: auto;
+}
+
+.light {
+    background-color: var(--color-white);
+
+    --menu-text: var(--color-black);
+    --menu-border: rgba(38, 38, 38, 0.15);
+    --menu-active-border: var(--color-yellow);
+    --menu-login-bg: var(--color-yellow);
+    --menu-login-text: var(--color-white);
+    --menu-login-border: transparent;
+}
+
+.yellow {
+    background-color: var(--color-yellow);
+
+    --menu-text: var(--color-white);
+    --menu-border: rgba(255, 255, 255, 0.5);
+    --menu-active-border: var(--color-white);
+    --menu-login-bg: transparent;
+    --menu-login-text: var(--color-white);
+    --menu-login-border: rgba(255, 255, 255, 0.5);
+}
+
+.closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    color: var(--menu-text);
+    transition: opacity 250ms ease;
+}
+
+.closeIcon {
+    width: 32px;
+    height: 32px;
+}
+
+.closeButton:hover {
+    opacity: 0.7;
+}
+
+.closeButton:focus-visible {
+    outline: 2px solid var(--menu-text);
+    outline-offset: 3px;
+}
+
+.auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .menu {
+        width: 374px;
+        padding: 40px 32px;
+    }
+
+    .auth {
+        display: none;
+    }
+}
