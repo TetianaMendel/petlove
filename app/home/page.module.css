@@ -1,0 +1,135 @@
+.home {
+    width: 100%;
+    padding: 10px 20px 20px;
+}
+
+.hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    min-height: 390px;
+    padding: 0 20px 32px;
+    background-color: var(--color-yellow);
+    border-radius: 30px;
+}
+
+.content {
+    width: 100%;
+}
+
+.title {
+    color: var(--color-white);
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+}
+
+.title span {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.description {
+    margin-top: 20px;
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: -0.02em;
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 402px;
+    margin-top: 0;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.imageWrapper picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+    .home {
+        padding: 16px 32px 32px;
+    }
+
+    .hero {
+        min-height: 496px;
+        padding: 0 32px 32px;
+        border-radius: 60px;
+    }
+
+    .title {
+        font-size: 80px;
+        line-height: 0.96;
+    }
+
+    .description {
+        width: 255px;
+        margin-top: 24px;
+        margin-left: auto;
+        font-size: 18px;
+        line-height: 1.22;
+    }
+
+    .imageWrapper {
+        height: 496px;
+        border-radius: 60px;
+    }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1280px) {
+    .home {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 16px 32px 32px;
+    }
+
+    .hero {
+        min-height: 384px;
+        padding: 0 32px 32px;
+        border-radius: 60px;
+    }
+
+    .content {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .title {
+        max-width: 760px;
+        font-size: 90px;
+        line-height: 0.97;
+    }
+
+    .description {
+        width: 255px;
+        flex-shrink: 0;
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.22;
+    }
+
+    .imageWrapper {
+        height: 384px;
+        border-radius: 60px;
+    }
+}

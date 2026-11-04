@@ -1,10 +1,5 @@
-import styles from "./page.module.css";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
-  return (
-    <main className={styles.main}>
-      <h1>PetLove</h1>
-      <p>Find your favorite pet</p>
-    </main>
-  );
+export default function RootPage() {
+  redirect("/home");
 }

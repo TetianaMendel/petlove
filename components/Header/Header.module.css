@@ -53,8 +53,12 @@
     outline-offset: 3px;
 }
 
-
 .homeHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
     padding-top: 28px;
 }
 
@@ -63,6 +67,7 @@
 .homeHeader .heart {
     color: var(--color-white);
 }
+
 
 /* Tablet */
 
@@ -94,7 +99,21 @@
     }
 
     .homeHeader {
-        padding-top: 20px;
+        padding-top: 32px;
+    }
+    .homeHeader .container {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .homeHeader .auth a:first-child {
+        color: var(--color-white);
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .homeHeader .auth a:first-child:hover {
+        border-color: var(--color-white);
     }
 }
 
@@ -130,5 +149,19 @@
 
     .homeHeader {
         padding-top: 32px;
+    }
+    .homeHeader .container {
+        padding-left: 64px;
+        padding-right: 64px;
+    }
+
+    .homeHeader .navigation a {
+        color: var(--color-white);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .homeHeader .navigation a:hover,
+    .homeHeader .navigation a[aria-current="page"] {
+        border-color: var(--color-white);
     }
 }

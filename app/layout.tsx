@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
@@ -16,21 +17,14 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body className={`${manrope.variable}`}>
+    <html lang="en">
+      <body className={manrope.variable}>
         <Header />
-
         <main>{children}</main>
-
-        <footer>
-          <p>
-            Created <time dateTime='2026'>2026</time>
-          </p>
-        </footer>
       </body>
     </html>
   );
-};
+}

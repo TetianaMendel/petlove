@@ -13,7 +13,7 @@ import styles from "./Header.module.css";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const isHomePage = pathname === "/home";
 
   return (
     <header
@@ -23,7 +23,7 @@ export default function Header() {
     >
       <div className={`container ${styles.container}`}>
         <Link
-          href="/"
+          href="/home"
           className={styles.logo}
           aria-label="PetLove home"
         >
