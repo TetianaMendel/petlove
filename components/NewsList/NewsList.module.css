@@ -1,0 +1,29 @@
+.list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: stretch;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 24px;
+        row-gap: 44px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: 35px;
+        row-gap: 60px;
+    }
+}

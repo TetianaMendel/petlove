@@ -1,4 +1,3 @@
-
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -7,6 +6,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "petlove.b.goit.study",
+      },
+      {
+        protocol: "https",
+        hostname: "www.nytimes.com",
       },
     ],
   },
