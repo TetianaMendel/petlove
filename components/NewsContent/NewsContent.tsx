@@ -1,30 +1,58 @@
 "use client";
 
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchNews } from "@/lib/clientApi";
+import Title from "@/components/Title/Title";
+import SearchField from "@/components/SearchField/SearchField";
 import NewsList from "@/components/NewsList/NewsList";
+import Pagination from "@/components/Pagination/Pagination";
+import { fetchNews } from "@/lib/clientApi";
+import styles from "./NewsContent.module.css";
 
 export default function NewsContent() {
+  const [keyword, setKeyword] = useState("");
+  const [page, setPage] = useState(1);
+
+  const limit = 6;
+
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["news", 1, 6],
-    queryFn: () =>
-      fetchNews({
-        page: 1,
-        limit: 6,
-      }),
+    queryKey: ["news", page, limit, keyword],
+    queryFn: () => fetchNews({ page, limit, keyword }),
   });
 
-  if (isLoading) {
-    return <p>Loading news...</p>;
-  }
+  const handleSearch = (value: string) => {
+    setKeyword(value);
+    setPage(1);
+  };
 
-  if (isError) {
-    return <p role="alert">Failed to load news.</p>;
-  }
+  return (
+    <>
+      <div className={styles.top}>
+        <Title>News</Title>
+        <SearchField onSearch={handleSearch} />
+      </div>
 
-  if (!data || data.results.length === 0) {
-    return <p>No news found.</p>;
-  }
+      {isLoading && <p>Loading news...</p>}
 
-  return <NewsList news={data.results} />;
+      {isError && (
+        <p role="alert">Failed to load news.</p>
+      )}
+
+      {data && !isLoading && !isError && (
+        <>
+          {data.results.length > 0 ? (
+            <NewsList news={data.results} />
+          ) : (
+            <p>No news found.</p>
+          )}
+
+          <Pagination
+            currentPage={page}
+            totalPages={data.totalPages}
+            onPageChange={setPage}
+          />
+        </>
+      )}
+    </>
+  );
 }
