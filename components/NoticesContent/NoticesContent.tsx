@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import Title from "@/components/Title/Title";
 import NoticesFilters from "@/components/NoticesFilters/NoticesFilters";
@@ -14,24 +15,25 @@ import type {
 } from "@/types/notices";
 import styles from "./NoticesContent.module.css";
 
-export default function NoticesContent() {
+interface NoticesContentProps {
+  initialCategory?: NoticeCategory;
+}
+
+export default function NoticesContent({
+  initialCategory,
+}: NoticesContentProps) {
+  const router = useRouter();
+
   const [keyword, setKeyword] = useState("");
+  const category = initialCategory;
 
-  const [category, setCategory] =
-    useState<NoticeCategory | undefined>();
-
-  const [sex, setSex] =
-    useState<NoticeSex | undefined>();
-
-  const [species, setSpecies] =
-    useState<string | undefined>();
-
-  const [locationId, setLocationId] =
-    useState<string | undefined>();
-
+  const [sex, setSex] = useState<NoticeSex | undefined>();
+  const [species, setSpecies] = useState<string | undefined>();
+  const [locationId, setLocationId] = useState<string | undefined>();
   const [sort, setSort] = useState<SortOption | null>(null);
   const [page, setPage] = useState(1);
   const [resetKey, setResetKey] = useState(0);
+
   const { data, isPending, isError } = useQuery({
     queryKey: [
       "notices",
@@ -75,27 +77,21 @@ export default function NoticesContent() {
   const handleCategoryChange = (
     value: NoticeCategory | undefined
   ) => {
-    setCategory(value);
     setPage(1);
+    router.push(`/notices/filter/${value ?? "all"}`);
   };
 
-  const handleSexChange = (
-    value: NoticeSex | undefined
-  ) => {
+  const handleSexChange = (value: NoticeSex | undefined) => {
     setSex(value);
     setPage(1);
   };
 
-  const handleSpeciesChange = (
-    value: string | undefined
-  ) => {
+  const handleSpeciesChange = (value: string | undefined) => {
     setSpecies(value);
     setPage(1);
   };
 
-  const handleLocationChange = (
-    value: string | undefined
-  ) => {
+  const handleLocationChange = (value: string | undefined) => {
     setLocationId(value);
     setPage(1);
   };
@@ -107,13 +103,14 @@ export default function NoticesContent() {
 
   const handleReset = () => {
     setKeyword("");
-    setCategory(undefined);
     setSex(undefined);
     setSpecies(undefined);
     setLocationId(undefined);
     setSort(null);
     setPage(1);
     setResetKey((current) => current + 1);
+
+    router.push("/notices/filter/all");
   };
 
   const handlePageChange = (nextPage: number) => {
