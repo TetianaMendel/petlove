@@ -1,7 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import type { Notice } from "@/types/notices";
 import { FiHeart } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
+import ModalAttention from "@/components/ModalAttention/ModalAttention";
 import styles from "./NoticesItem.module.css";
 
 interface NoticesItemProps {
@@ -11,6 +15,8 @@ interface NoticesItemProps {
 export default function NoticesItem({
   notice,
 }: NoticesItemProps) {
+  const [isAttentionOpen, setIsAttentionOpen] = useState(false);
+
   const {
     imgURL,
     title,
@@ -25,88 +31,111 @@ export default function NoticesItem({
   } = notice;
 
   const formattedBirthday = birthday
-  ? new Date(birthday).toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    }).replace(/\//g, ".")
-  : "Unknown";
+    ? new Date(birthday)
+        .toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        })
+        .replace(/\//g, ".")
+    : "Unknown";
+
+  const openAttention = () => {
+    setIsAttentionOpen(true);
+  };
+
+  const closeAttention = () => {
+    setIsAttentionOpen(false);
+  };
 
   return (
-    <article className={styles.card}>
-      <div className={styles.imageWrapper}>
-        <Image
-          src={imgURL}
-          alt={name || title}
-          fill
-          unoptimized
-          sizes="(min-width: 1280px) 360px, (min-width: 768px) 340px, 100vw"
-          className={styles.image}
-        />
-      </div>
-
-      <div className={styles.content}>
-        <div className={styles.heading}>
-          <h2 className={styles.title}>{title}</h2>
-
-          <span className={styles.popularity}>
-            <FaStar size={16} aria-hidden="true" />
-            {popularity}
-          </span>
+    <>
+      <article className={styles.card}>
+        <div className={styles.imageWrapper}>
+          <Image
+            src={imgURL}
+            alt={name || title}
+            fill
+            unoptimized
+            sizes="(min-width: 1280px) 360px, (min-width: 768px) 340px, 100vw"
+            className={styles.image}
+          />
         </div>
 
-        <dl className={styles.details}>
-          <div>
-            <dt>Name</dt>
-            <dd>{name || "Unknown"}</dd>
+        <div className={styles.content}>
+          <div className={styles.heading}>
+            <h2 className={styles.title}>{title}</h2>
+
+            <span className={styles.popularity}>
+              <FaStar size={16} aria-hidden="true" />
+              {popularity}
+            </span>
           </div>
 
-          <div>
-            <dt>Birthday</dt>
-            <dd>{formattedBirthday}</dd>
-          </div>
+          <dl className={styles.details}>
+            <div>
+              <dt>Name</dt>
+              <dd>{name || "Unknown"}</dd>
+            </div>
 
-          <div>
-            <dt>Sex</dt>
-            <dd>{sex}</dd>
-          </div>
+            <div>
+              <dt>Birthday</dt>
+              <dd>{formattedBirthday}</dd>
+            </div>
 
-          <div>
-            <dt>Species</dt>
-            <dd>{species}</dd>
-          </div>
+            <div>
+              <dt>Sex</dt>
+              <dd>{sex}</dd>
+            </div>
 
-          <div>
-            <dt>Category</dt>
-            <dd>{category}</dd>
-          </div>
-        </dl>
+            <div>
+              <dt>Species</dt>
+              <dd>{species}</dd>
+            </div>
 
-        <p className={styles.comment}>{comment}</p>
+            <div>
+              <dt>Category</dt>
+              <dd>{category}</dd>
+            </div>
+          </dl>
 
-        <div className={styles.footer}>
-          <p className={styles.price}>
-            {price != null ? `$${price.toFixed(2)}` : "\u00A0"}
-          </p>
+          <p className={styles.comment}>{comment}</p>
 
-          <div className={styles.actions}>
-            <button
-              type="button"
-              className={styles.learnMore}
-            >
-              Learn more
-            </button>
+          <div className={styles.footer}>
+            <p className={styles.price}>
+              {price != null
+                ? `$${price.toFixed(2)}`
+                : "\u00A0"}
+            </p>
 
-            <button
-              type="button"
-              className={styles.favorite}
-              aria-label="Add to favorites"
-            >
-              <FiHeart size={18} />
-            </button>
+            <div className={styles.actions}>
+              <button
+                type="button"
+                className={styles.learnMore}
+                onClick={openAttention}
+              >
+                Learn more
+              </button>
+
+              <button
+                type="button"
+                className={styles.favorite}
+                aria-label="Add to favorites"
+                onClick={openAttention}
+              >
+                <FiHeart
+                  size={18}
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </article>
+      </article>
+
+      {isAttentionOpen && (
+        <ModalAttention onClose={closeAttention} />
+      )}
+    </>
   );
 }
