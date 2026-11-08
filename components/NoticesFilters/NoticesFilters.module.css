@@ -1,0 +1,259 @@
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: var(--color-milk);
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+.searchWrapper {
+    width: 100%;
+    min-width: 0;
+}
+
+.searchWrapper>* {
+    width: 100%;
+    border: none;
+}
+
+.searchWrapper input::placeholder {
+    color: var(--color-black);
+    opacity: 1;
+}
+
+.selectRow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.speciesWrapper {
+    width: 100%;
+    min-width: 0;
+}
+
+.locationWrapper {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+.locationWrapper :global(.location-select__placeholder) {
+    color: var(--color-black);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.03em;
+}
+
+.locationWrapper :global(.location-select__input-container) {
+    color: var(--color-black);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.03em;
+}
+
+.locationSelect {
+    width: 100%;
+    height: 42px;
+}
+
+.sort {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(38, 38, 38, 0.1);
+}
+
+.sortButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.03em;
+    cursor: pointer;
+    transition:
+        background-color 250ms ease,
+        color 250ms ease;
+}
+
+.sortButton:hover,
+.sortButtonActive {
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+}
+
+.resetButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-left: auto;
+    padding: 10px 8px;
+    border: none;
+    border-radius: 30px;
+    background-color: transparent;
+    color: rgba(38, 38, 38, 0.6);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.29;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 250ms ease;
+}
+
+.resetButton:hover {
+    color: var(--color-yellow);
+}
+
+.sortButton:focus-visible,
+.resetButton:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+    .filters {
+        padding: 40px 32px;
+    }
+
+    .fields {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        align-items: center;
+    }
+
+    .searchWrapper {
+        grid-column: 1;
+        grid-row: 1;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .searchWrapper>* {
+        width: 100%;
+        height: 48px;
+    }
+
+    .selectRow {
+        display: contents;
+    }
+
+    .selectRow> :first-child {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .selectRow> :last-child {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .speciesWrapper {
+        grid-column: 1;
+        grid-row: 2;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .locationWrapper {
+        grid-column: 2;
+        grid-row: 2;
+        width: 100%;
+        min-width: 0;
+    }
+    .locationWrapper :global(.location-select__placeholder) {
+        font-size: 16px;   
+    }
+
+    .locationWrapper :global(.location-select__input-container) {
+        font-size: 16px;
+    }
+
+    .locationSelect {
+        height: 48px;
+    }
+
+    .sort {
+        gap: 8px;
+    }
+
+    .sortButton {
+        min-height: 48px;
+        padding: 14px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1280px) {
+    .filters {
+        padding: 40px;
+        gap: 20px;
+    }
+
+    .fields {
+        grid-template-columns:
+            minmax(0, 1.4fr) minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 1fr) minmax(0, 1.2fr);
+        gap: 16px;
+    }
+
+    .searchWrapper {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .selectRow> :first-child {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .selectRow> :last-child {
+        grid-column: 3;
+        grid-row: 1;
+    }
+
+    .speciesWrapper {
+        grid-column: 4;
+        grid-row: 1;
+    }
+
+    .locationWrapper {
+        grid-column: 5;
+        grid-row: 1;
+    }
+
+    .sort {
+        box-sizing: border-box;
+        padding-top: 19px;
+    }
+}
