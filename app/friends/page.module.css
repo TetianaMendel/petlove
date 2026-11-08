@@ -1,0 +1,30 @@
+.page {
+    padding: 62px 20px 80px;
+}
+
+.titleWrapper {
+    margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+    .page {
+        padding: 111px 32px 80px;
+    }
+
+    .titleWrapper {
+        margin-bottom: 44px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .page {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 96px 64px 80px;
+    }
+
+    .titleWrapper {
+        margin-bottom: 60px;
+    }
+}

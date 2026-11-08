@@ -7,6 +7,7 @@ import type {
   NoticeSex,
 } from "@/types/notices";
 import type { City } from "@/types/cities";
+import type { Friend } from "@/types/friends";
 
 export interface NewsResponse {
   results: NewsItem[];
@@ -110,6 +111,12 @@ export const fetchCities = async (
       params: { keyword },
     }
   );
+
+  return response.data;
+};
+
+export const fetchFriends = async (): Promise<Friend[]> => {
+  const response = await nextServer.get<Friend[]>("/friends");
 
   return response.data;
 };
