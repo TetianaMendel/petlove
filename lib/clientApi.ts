@@ -1,4 +1,5 @@
 import { nextServer } from "./api";
+import axios from "axios"
 
 import type { NewsItem } from "@/types/news";
 import type {
@@ -117,6 +118,28 @@ export const fetchCities = async (
 
 export const fetchFriends = async (): Promise<Friend[]> => {
   const response = await nextServer.get<Friend[]>("/friends");
+
+  return response.data;
+};
+
+export type RegisterRequest = {
+  name: string;
+  email: string;
+  password: string;
+};
+
+export type RegisterResponse = {
+  name: string;
+  email: string;
+};
+
+export const register = async (
+  data: RegisterRequest
+): Promise<RegisterResponse> => {
+  const response = await axios.post<RegisterResponse>(
+    "/api/auth/register",
+    data
+  );
 
   return response.data;
 };

@@ -1,0 +1,185 @@
+.registrationForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formField {
+    position: relative;
+    width: 100%;
+}
+
+.controlWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.formControl {
+    display: block;
+    width: 100%;
+    padding: 12px 40px 12px 12px;
+    border: 1px solid rgba(38, 38, 38, 0.15);
+    border-radius: 30px;
+    background-color: transparent;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+    color: rgba(38, 38, 38, 0.8);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.formControl::placeholder {
+    color: rgba(38, 38, 38, 0.5);
+}
+
+.formControl:hover,
+.formControl:focus {
+    border-color: var(--color-yellow);
+}
+
+.controlInvalid,
+.formControl.controlInvalid:hover,
+.formControl.controlInvalid:focus {
+    border-color: var(--color-red);
+}
+
+.controlValid,
+.formControl.controlValid:hover,
+.formControl.controlValid:focus {
+    border-color: var(--color-green);
+}
+
+.statusValid,
+.statusInvalid,
+.passwordValid,
+.passwordInvalid {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+}
+
+.statusValid,
+.statusInvalid {
+    right: 12px;
+}
+
+.passwordValid,
+.passwordInvalid {
+    right: 38px;
+}
+
+.statusValid,
+.passwordValid {
+    color: var(--color-green);
+}
+
+.statusInvalid,
+.passwordInvalid {
+    color: var(--color-red);
+}
+
+.visibilityButton {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-yellow);
+    cursor: pointer;
+}
+
+.visibilityButton svg {
+    width: 22px;
+    height: 22px;
+}
+
+.validationMessage {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16667;
+    letter-spacing: -0.03em;
+    color: var(--color-red);
+}
+
+.registerButton {
+    width: 100%;
+    margin-top: 24px;
+    padding: 12px 0;
+    border: 0;
+    border-radius: 30px;
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.registerButton:hover,
+.registerButton:focus-visible {
+    background-color: var(--color-dark-yellow);
+}
+
+.registerButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+    .registrationForm {
+        gap: 16px;
+    }
+
+    .formControl {
+        padding: 16px 54px 16px 16px;
+        font-size: 16px;
+    }
+
+    .statusValid,
+    .statusInvalid {
+        right: 16px;
+    }
+
+    .passwordValid,
+    .passwordInvalid {
+        right: 50px;
+    }
+
+    .visibilityButton {
+        right: 16px;
+    }
+
+    .registerButton {
+        margin-top: 24px;
+        padding: 16px 0;
+    }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1280px) {
+    .registerButton {
+        margin-top: 32px;
+        padding: 18px 0;
+    }
+}

@@ -1,0 +1,182 @@
+.registrationSection {
+    padding: 28px 0 20px;
+}
+
+.registrationLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.petVisual {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+.petDetailsCard {
+    display: none;
+}
+
+.registrationPanel {
+    width: 100%;
+    padding: 27px 20px;
+    border-radius: 30px;
+    background-color: var(--color-white);
+}
+
+.registrationContent {
+    width: 100%;
+}
+
+.introText {
+    margin-top: 12px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.02em;
+}
+
+.loginPrompt {
+    margin-top: 12px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16667;
+    letter-spacing: -0.03em;
+    color: rgba(38, 38, 38, 0.5);
+}
+
+.loginAnchor {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    color: var(--color-yellow);
+}
+
+/* Pet information card */
+
+.petAvatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: var(--color-milk);
+}
+
+.petDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.petHeading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.petName {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    color: var(--color-yellow);
+}
+
+.petBirthday {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16667;
+    letter-spacing: -0.02em;
+}
+
+.petDescription {
+    max-width: 194px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16667;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.8);
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+    .registrationSection {
+        padding: 42px 0 32px;
+    }
+
+    .registrationLayout {
+        gap: 16px;
+    }
+
+    .registrationPanel {
+        padding: 27px 140px;
+        border-radius: 60px;
+    }
+
+    .introText {
+        margin-top: 16px;
+        margin-bottom: 32px;
+        font-size: 18px;
+    }
+
+    .loginPrompt {
+        margin-top: 16px;
+        font-size: 14px;
+        line-height: 1.42857;
+    }
+
+    .loginAnchor {
+        font-size: 14px;
+        line-height: 1.42857;
+    }
+
+    .petDetailsCard {
+        position: absolute;
+        bottom: 32px;
+        left: 32px;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 19px 16px;
+        border-radius: 20px;
+        background-color: var(--color-white);
+    }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1280px) {
+    .registrationLayout {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 32px;
+    }
+
+    .petVisual {
+        display: flex;
+        flex: 0 0 592px;
+    }
+
+    .registrationPanel {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        min-width: 0;
+        padding: 68px 84px;
+    }
+
+    .petDetailsCard {
+        bottom: 97px;
+        left: 61px;
+    }
+}
