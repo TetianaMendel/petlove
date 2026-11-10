@@ -1,0 +1,193 @@
+.form {
+    width: 100%;
+}
+
+.fieldsWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formField {
+    width: 100%;
+}
+
+.field {
+    position: relative;
+    width: 100%;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    border: 1px solid rgba(38, 38, 38, 0.15);
+    border-radius: 30px;
+    padding: 12px 44px 12px 12px;
+    background-color: transparent;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+    color: rgba(38, 38, 38, 0.8);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input::placeholder {
+    color: rgba(38, 38, 38, 0.5);
+}
+
+.input:hover,
+.input:focus {
+    border-color: var(--color-yellow);
+}
+
+.input.inputError,
+.input.inputError:hover,
+.input.inputError:focus {
+    border-color: var(--color-red);
+}
+
+.input.inputValid,
+.input.inputValid:hover,
+.input.inputValid:focus {
+    border-color: var(--color-green);
+}
+
+.iconValid,
+.iconInvalid,
+.passwordValid,
+.passwordInvalid {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+}
+
+.iconValid,
+.iconInvalid {
+    right: 12px;
+}
+
+.passwordValid,
+.passwordInvalid {
+    right: 38px;
+}
+
+.iconValid,
+.passwordValid {
+    color: var(--color-green);
+}
+
+.iconInvalid,
+.passwordInvalid {
+    color: var(--color-red);
+}
+
+.error {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16667;
+    letter-spacing: -0.03em;
+    color: var(--color-red);
+}
+
+.passwordToggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-yellow);
+    cursor: pointer;
+}
+
+.passwordToggle svg {
+    width: 22px;
+    height: 22px;
+}
+
+.passwordToggle:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.button {
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--color-white);
+    border: 0;
+    border-radius: 30px;
+    padding: 12px 0;
+    width: 100%;
+    background-color: var(--color-yellow);
+    margin-top: 24px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.button:hover,
+.button:focus-visible {
+    background-color: var(--color-dark-yellow);
+}
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+    .fieldsWrap {
+        gap: 16px;
+    }
+
+    .input {
+        padding: 16px 54px 16px 16px;
+        font-size: 16px;
+    }
+
+    .iconValid,
+    .iconInvalid {
+        right: 16px;
+    }
+
+    .passwordValid,
+    .passwordInvalid {
+        right: 50px;
+    }
+
+    .passwordToggle {
+        right: 16px;
+    }
+
+    .button {
+        padding: 16px 0;
+    }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1280px) {
+    .button {
+        padding: 18px 0;
+        margin-top: 32px;
+    }
+}

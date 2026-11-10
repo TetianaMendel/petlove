@@ -143,3 +143,24 @@ export const register = async (
 
   return response.data;
 };
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  name: string;
+  email: string;
+}
+
+export async function login(
+  credentials: LoginRequest
+): Promise<LoginResponse> {
+  const response = await axios.post<LoginResponse>(
+    "/api/auth/login",
+    credentials
+  );
+
+  return response.data;
+}
