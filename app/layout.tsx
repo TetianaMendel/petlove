@@ -1,9 +1,9 @@
-
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/Header/Header";
+import AuthInitializer from "@/components/AuthInitializer/AuthInitializer";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import StoreProvider from "@/lib/store/StoreProvider";
 import { Toaster } from "react-hot-toast";
@@ -28,6 +28,7 @@ export default function RootLayout({
       <body className={manrope.variable}>
         <StoreProvider>
           <TanStackProvider>
+            <AuthInitializer />
             <Header />
             <main>{children}</main>
             <Toaster position="top-right" />
