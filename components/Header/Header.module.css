@@ -32,6 +32,18 @@
     display: none;
 }
 
+.mobileActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.mobileUser {
+    display: flex;
+    align-items: center;
+}
+
 .menuButton {
     display: flex;
     align-items: center;
@@ -62,12 +74,16 @@
     padding-top: 28px;
 }
 
+.homeHeader .container {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 .homeHeader .logo,
 .homeHeader .menuIcon,
 .homeHeader .heart {
     color: var(--color-white);
 }
-
 
 /* Tablet */
 
@@ -88,6 +104,14 @@
         margin-right: 16px;
     }
 
+    .mobileActions {
+        margin-left: 0;
+    }
+
+    .mobileUser {
+        display: none;
+    }
+
     .menuButton {
         width: 36px;
         height: 36px;
@@ -101,19 +125,25 @@
     .homeHeader {
         padding-top: 32px;
     }
+
     .homeHeader .container {
-        padding-left: 40px;
-        padding-right: 40px;
+        padding-left: 64px;
+        padding-right: 64px;
     }
 
-    .homeHeader .auth a:first-child {
+    .homeHeader .guestAuth a:first-child {
         color: var(--color-white);
         background-color: transparent;
         border: 1px solid rgba(255, 255, 255, 0.4);
     }
 
-    .homeHeader .auth a:first-child:hover {
+    .homeHeader .guestAuth a:first-child:hover {
         border-color: var(--color-white);
+    }
+
+    .homeHeader .auth:not(.guestAuth) a,
+    .homeHeader .auth:not(.guestAuth) a span {
+        color: var(--color-white);
     }
 }
 
@@ -143,13 +173,14 @@
         margin-right: 0;
     }
 
-    .menuButton {
+    .mobileActions {
         display: none;
     }
 
     .homeHeader {
         padding-top: 32px;
     }
+
     .homeHeader .container {
         padding-left: 64px;
         padding-right: 64px;

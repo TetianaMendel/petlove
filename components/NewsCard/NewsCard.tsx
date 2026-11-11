@@ -19,6 +19,7 @@ export default function NewsCard({
           src={news.imgUrl}
           alt={news.title}
           fill
+          unoptimized
           sizes="(min-width: 1280px) 361px, (min-width: 768px) 50vw, 100vw"
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}

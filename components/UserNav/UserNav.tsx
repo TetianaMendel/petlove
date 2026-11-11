@@ -1,56 +1,28 @@
-import Image from "next/image";
-import Link from "next/link";
-import styles from "./UserNav.module.css";
+"use client";
+
+import { usePathname } from "next/navigation";
+
+import UserBar from "../UserBar/UserBar";
+import LogOutBtn from "../LogOutBtn/LogOutBtn";
+import css from "./UserNav.module.css";
 
 type UserNavProps = {
-  name: string;
-  avatar?: string | null;
-  onLogout: () => void;
   variant?: "desktop" | "mobile";
+  onNavigate?: () => void;
 };
 
 export default function UserNav({
-  name,
-  avatar,
-  onLogout,
   variant = "desktop",
+  onNavigate,
 }: UserNavProps) {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/home";
+
   return (
-    <div className={`${styles.userNav} ${styles[variant]}`}>
-      <Link
-        href="/profile"
-        className={styles.userBar}
-        aria-label={`Go to ${name}'s profile`}
-      >
-        <span className={styles.avatar}>
-          {avatar ? (
-            <Image
-              src={avatar}
-              alt={`${name}'s avatar`}
-              width={50}
-              height={50}
-              className={styles.avatarImage}
-            />
-          ) : (
-            <span
-              className={styles.defaultAvatar}
-              aria-hidden="true"
-            >
-              👤
-            </span>
-          )}
-        </span>
+    <div className={`${css.userNav} ${css[variant]}`}>
+      {!isHomePage && <LogOutBtn variant={variant} />}
 
-        <span className={styles.userName}>{name}</span>
-      </Link>
-
-      <button
-        type="button"
-        className={styles.logout}
-        onClick={onLogout}
-      >
-        LOG OUT
-      </button>
+      <UserBar onNavigate={onNavigate} />
     </div>
   );
 }

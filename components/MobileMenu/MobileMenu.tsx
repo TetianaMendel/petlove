@@ -3,8 +3,11 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { RxCross2 } from "react-icons/rx";
+
+import { useAppSelector } from "@/lib/store/hooks";
 import Nav from "../Nav/Nav";
 import AuthNav from "../AuthNav/AuthNav";
+import LogOutBtn from "../LogOutBtn/LogOutBtn";
 import styles from "./MobileMenu.module.css";
 
 type MobileMenuProps = {
@@ -19,6 +22,11 @@ export default function MobileMenu({
   variant = "light",
 }: MobileMenuProps) {
   const pathname = usePathname();
+
+  const { isAuthenticated, isAuthChecking } = useAppSelector(
+    (state) => state.auth
+  );
+
   const menuRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previousPathnameRef = useRef(pathname);
@@ -134,10 +142,15 @@ export default function MobileMenu({
         />
 
         <div className={styles.auth}>
-          <AuthNav
-            variant="mobile"
-            onNavigate={onClose}
-          />
+          {!isAuthChecking &&
+            (isAuthenticated ? (
+              <LogOutBtn variant="mobile" />
+            ) : (
+              <AuthNav
+                variant="mobile"
+                onNavigate={onClose}
+              />
+            ))}
         </div>
       </div>
     </div>
