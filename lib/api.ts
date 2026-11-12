@@ -5,3 +5,7 @@ const baseURL = process.env.NEXT_PUBLIC_API_URL + "/api";
 export const nextServer = axios.create({
   baseURL,
 });
+
+export const apiInstance = axios.create({
+  baseURL: "/api",
+});

@@ -7,7 +7,11 @@ import Title from "@/components/Title/Title";
 import NoticesFilters from "@/components/NoticesFilters/NoticesFilters";
 import NoticesList from "@/components/NoticesList/NoticesList";
 import Pagination from "@/components/Pagination/Pagination";
-import { fetchNotices } from "@/lib/clientApi";
+import {
+  fetchNotices,
+  fetchFavoriteNoticeIds,
+} from "@/lib/clientApi";
+import { useAppSelector } from "@/lib/store/hooks";
 import type {
   NoticeCategory,
   NoticeSex,
@@ -23,6 +27,16 @@ export default function NoticesContent({
   initialCategory,
 }: NoticesContentProps) {
   const router = useRouter();
+
+  const { user, isAuthenticated, isAuthChecking } = useAppSelector(
+    (state) => state.auth
+  );
+
+  const { data: favoriteIds = [] } = useQuery({
+    queryKey: ["favorite-notices", user?.email],
+    queryFn: fetchFavoriteNoticeIds,
+    enabled: isAuthenticated && !isAuthChecking,
+  });
 
   const [keyword, setKeyword] = useState("");
   const category = initialCategory;
@@ -163,7 +177,10 @@ export default function NoticesContent({
         <>
           {data.results.length > 0 ? (
             <>
-              <NoticesList notices={data.results} />
+              <NoticesList
+                notices={data.results}
+                favoriteIds={favoriteIds}
+              />
 
               <Pagination
                 totalPages={data.totalPages}

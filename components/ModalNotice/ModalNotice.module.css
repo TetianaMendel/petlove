@@ -1,0 +1,227 @@
+.noticeModal {
+    width: 90%;
+    padding: 40px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    color: var(--color-black);
+    cursor: pointer;
+}
+
+.imageContainer {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+.petImage {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.categoryBadge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 8px 14px;
+    border-radius: 30px;
+    background-color: var(--color-milk);
+    color: var(--color-yellow);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+}
+
+.noticeTitle {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.popularity {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.29;
+}
+
+.popularity svg {
+    color: var(--color-yellow);
+}
+
+.detailsList {
+    display: flex;
+    justify-content: space-around;
+    gap: 27px;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.detailItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.detailLabel {
+    color: rgba(38, 38, 38, 0.5);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+}
+
+.detailValue {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.17;
+    letter-spacing: -0.02em;
+}
+
+.description {
+    margin-bottom: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.price {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.favoriteButton,
+.contactButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.favoriteButton {
+    color: var(--color-white);
+    background-color: var(--color-yellow);
+}
+
+.favoriteButton:hover {
+    background-color: var(--color-dark-yellow);
+}
+
+.favoriteButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.contactButton {
+    color: var(--color-yellow);
+    background-color: var(--color-milk);
+}
+
+.contactButton:hover {
+    background-color: var(--color-dark-milk);
+}
+
+.contactDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.contactDetails a {
+    color: var(--color-black);
+    text-decoration: underline;
+}
+
+.contactDetails a:hover {
+    color: var(--color-yellow);
+}
+
+@media screen and (min-width: 768px) {
+    .noticeModal {
+        padding: 40px 70px;
+    }
+
+    .imageContainer {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 16px;
+    }
+
+    .categoryBadge {
+        font-size: 14px;
+    }
+
+    .noticeTitle,
+    .price {
+        font-size: 18px;
+    }
+
+    .popularity {
+        margin-bottom: 20px;
+    }
+
+    .favoriteButton,
+    .contactButton {
+        padding: 14px 0;
+    }
+
+    .contactDetails {
+        flex-direction: row;
+        gap: 10px;
+        font-size: 16px;
+    }
+}

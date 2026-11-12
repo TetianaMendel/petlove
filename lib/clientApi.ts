@@ -1,9 +1,10 @@
-import { nextServer } from "./api";
+import { nextServer, apiInstance } from "./api";
 import axios from "axios"
 
 import type { NewsItem } from "@/types/news";
 import type {
   Notice,
+  NoticeDetails,
   NoticeCategory,
   NoticeSex,
 } from "@/types/notices";
@@ -114,6 +115,40 @@ export const fetchCities = async (
   );
 
   return response.data;
+};
+
+export const fetchNoticeById = async (
+  id: string
+): Promise<NoticeDetails> => {
+  const { data } = await apiInstance.get<NoticeDetails>(
+    `/notices/${id}`
+  );
+
+  return data;
+};
+
+export const addNoticeToFavorites = async (id: string) => {
+  const { data } = await apiInstance.post<string[]>(
+    `/notices/${id}`
+  );
+
+  return data;
+};
+
+export const removeNoticeFromFavorites = async (id: string) => {
+  const { data } = await apiInstance.delete<string[]>(
+    `/notices/${id}`
+  );
+
+  return data;
+};
+
+export const fetchFavoriteNoticeIds = async (): Promise<string[]> => {
+  const { data } = await apiInstance.get<string[]>(
+    "/notices/favorites"
+  );
+
+  return data;
 };
 
 export const fetchFriends = async (): Promise<Friend[]> => {

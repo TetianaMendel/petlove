@@ -2,20 +2,69 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import type { Notice } from "@/types/notices";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 import { FiHeart } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
+import type { Notice, NoticeDetails } from "@/types/notices";
+import { useAppSelector } from "@/lib/store/hooks";
+import {
+  addNoticeToFavorites,
+  removeNoticeFromFavorites,
+  fetchNoticeById,
+} from "@/lib/clientApi";
 import ModalAttention from "@/components/ModalAttention/ModalAttention";
+import ModalNotice from "@/components/ModalNotice/ModalNotice";
 import styles from "./NoticesItem.module.css";
 
 interface NoticesItemProps {
   notice: Notice;
+  isFavorite: boolean;
 }
 
 export default function NoticesItem({
   notice,
+  isFavorite,
 }: NoticesItemProps) {
   const [isAttentionOpen, setIsAttentionOpen] = useState(false);
+  const [noticeDetails, setNoticeDetails] =
+    useState<NoticeDetails | null>(null);
+
+  const { user, isAuthenticated, isAuthChecking } = useAppSelector(
+    (state) => state.auth
+  );
+
+  const queryClient = useQueryClient();
+
+  const favoriteMutation = useMutation({
+    mutationFn: () =>
+      isFavorite
+        ? removeNoticeFromFavorites(notice._id)
+        : addNoticeToFavorites(notice._id),
+
+    onSuccess: (favoriteIds) => {
+      queryClient.setQueryData(
+        ["favorite-notices", user?.email],
+        favoriteIds
+      );
+    },
+
+    onError: () => {
+      toast.error("Failed to update favorites.");
+    },
+  });
+
+  const detailsMutation = useMutation({
+    mutationFn: () => fetchNoticeById(notice._id),
+
+    onSuccess: (details) => {
+      setNoticeDetails(details);
+    },
+
+    onError: () => {
+      toast.error("Failed to load notice details.");
+    },
+  });
 
   const {
     imgURL,
@@ -46,6 +95,40 @@ export default function NoticesItem({
 
   const closeAttention = () => {
     setIsAttentionOpen(false);
+  };
+
+  const closeNotice = () => {
+    setNoticeDetails(null);
+  };
+
+  const handleLearnMoreClick = () => {
+    if (isAuthChecking) {
+      return;
+    }
+
+    if (!isAuthenticated) {
+      openAttention();
+      return;
+    }
+
+    if (!detailsMutation.isPending) {
+      detailsMutation.mutate();
+    }
+  };
+
+  const handleFavoriteClick = () => {
+    if (isAuthChecking) {
+      return;
+    }
+
+    if (!isAuthenticated) {
+      openAttention();
+      return;
+    }
+
+    if (!favoriteMutation.isPending) {
+      favoriteMutation.mutate();
+    }
   };
 
   return (
@@ -112,19 +195,33 @@ export default function NoticesItem({
               <button
                 type="button"
                 className={styles.learnMore}
-                onClick={openAttention}
+                onClick={handleLearnMoreClick}
+                disabled={
+                  isAuthChecking || detailsMutation.isPending
+                }
               >
-                Learn more
+                {detailsMutation.isPending
+                  ? "Loading..."
+                  : "Learn more"}
               </button>
 
               <button
                 type="button"
                 className={styles.favorite}
-                aria-label="Add to favorites"
-                onClick={openAttention}
+                aria-label={
+                  isFavorite
+                    ? "Remove from favorites"
+                    : "Add to favorites"
+                }
+                aria-pressed={isFavorite}
+                onClick={handleFavoriteClick}
+                disabled={
+                  isAuthChecking || favoriteMutation.isPending
+                }
               >
                 <FiHeart
                   size={18}
+                  fill={isFavorite ? "currentColor" : "none"}
                   aria-hidden="true"
                 />
               </button>
@@ -135,6 +232,13 @@ export default function NoticesItem({
 
       {isAttentionOpen && (
         <ModalAttention onClose={closeAttention} />
+      )}
+
+      {noticeDetails && (
+        <ModalNotice
+          notice={noticeDetails}
+          onClose={closeNotice}
+        />
       )}
     </>
   );
