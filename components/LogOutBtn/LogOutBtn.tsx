@@ -5,7 +5,7 @@ import ModalApproveAction from "../ModalApproveAction/ModalApproveAction";
 import css from "./LogOutBtn.module.css";
 
 type LogOutBtnProps = {
-  variant?: "desktop" | "mobile";
+  variant?: "desktop" | "mobile" | "profile";
 };
 
 export default function LogOutBtn({

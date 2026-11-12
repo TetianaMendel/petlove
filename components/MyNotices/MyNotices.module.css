@@ -1,0 +1,115 @@
+.myNotices {
+    width: 100%;
+}
+
+.tabs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 123px;
+    height: 42px;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+    cursor: pointer;
+    transition:
+        background-color 250ms ease,
+        color 250ms ease;
+}
+
+.activeTab {
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+}
+
+.tab:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+}
+
+.noticesContent {
+    width: 100%;
+}
+
+.noticesList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.noticesItem {
+    width: 100%;
+    min-width: 0;
+}
+
+.emptyMessage {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin: 84px auto 0;
+}
+
+.emptyMessageSpan {
+    font-weight: 700;
+    color: var(--color-yellow);
+}
+
+@media screen and (min-width: 768px) {
+    .tab {
+        width: 142px;
+        height: 48px;
+        padding: 14px;
+        font-size: 16px;
+        line-height: 1.25;
+    }
+
+    .noticesList {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .noticesItem {
+        width: calc((100% - 20px) / 2);
+    }
+
+    .emptyMessage {
+        font-size: 16px;
+        width: 458px;
+        margin: 180px auto 0;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .noticesList {
+        gap: 24px;
+    }
+
+    .noticesItem {
+        width: calc((100% - 24px) / 2);
+    }
+
+    .emptyMessage {
+        margin: 180px auto 0 135px;
+    }
+}

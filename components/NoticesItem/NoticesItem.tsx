@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
-import { FiHeart } from "react-icons/fi";
+import { FiHeart, FiTrash2 } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
 import type { Notice, NoticeDetails } from "@/types/notices";
 import { useAppSelector } from "@/lib/store/hooks";
@@ -20,19 +20,20 @@ import styles from "./NoticesItem.module.css";
 interface NoticesItemProps {
   notice: Notice;
   isFavorite: boolean;
+  variant?: "default" | "myNotices";
 }
 
 export default function NoticesItem({
   notice,
   isFavorite,
+  variant = "default",
 }: NoticesItemProps) {
   const [isAttentionOpen, setIsAttentionOpen] = useState(false);
   const [noticeDetails, setNoticeDetails] =
     useState<NoticeDetails | null>(null);
 
-  const { user, isAuthenticated, isAuthChecking } = useAppSelector(
-    (state) => state.auth
-  );
+  const { user, isAuthenticated, isAuthChecking } =
+    useAppSelector((state) => state.auth);
 
   const queryClient = useQueryClient();
 
@@ -47,6 +48,10 @@ export default function NoticesItem({
         ["favorite-notices", user?.email],
         favoriteIds
       );
+
+      queryClient.invalidateQueries({
+        queryKey: ["full-user", user?.email],
+      });
     },
 
     onError: () => {
@@ -147,10 +152,15 @@ export default function NoticesItem({
 
         <div className={styles.content}>
           <div className={styles.heading}>
-            <h2 className={styles.title}>{title}</h2>
+            <h2 className={styles.title}>
+              {title}
+            </h2>
 
             <span className={styles.popularity}>
-              <FaStar size={16} aria-hidden="true" />
+              <FaStar
+                size={16}
+                aria-hidden="true"
+              />
               {popularity}
             </span>
           </div>
@@ -182,7 +192,9 @@ export default function NoticesItem({
             </div>
           </dl>
 
-          <p className={styles.comment}>{comment}</p>
+          <p className={styles.comment}>
+            {comment}
+          </p>
 
           <div className={styles.footer}>
             <p className={styles.price}>
@@ -197,7 +209,8 @@ export default function NoticesItem({
                 className={styles.learnMore}
                 onClick={handleLearnMoreClick}
                 disabled={
-                  isAuthChecking || detailsMutation.isPending
+                  isAuthChecking ||
+                  detailsMutation.isPending
                 }
               >
                 {detailsMutation.isPending
@@ -216,14 +229,26 @@ export default function NoticesItem({
                 aria-pressed={isFavorite}
                 onClick={handleFavoriteClick}
                 disabled={
-                  isAuthChecking || favoriteMutation.isPending
+                  isAuthChecking ||
+                  favoriteMutation.isPending
                 }
               >
-                <FiHeart
-                  size={18}
-                  fill={isFavorite ? "currentColor" : "none"}
-                  aria-hidden="true"
-                />
+                {variant === "myNotices" && isFavorite ? (
+                  <FiTrash2
+                    size={18}
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <FiHeart
+                    size={18}
+                    fill={
+                      isFavorite
+                        ? "currentColor"
+                        : "none"
+                    }
+                    aria-hidden="true"
+                  />
+                )}
               </button>
             </div>
           </div>
@@ -231,7 +256,9 @@ export default function NoticesItem({
       </article>
 
       {isAttentionOpen && (
-        <ModalAttention onClose={closeAttention} />
+        <ModalAttention
+          onClose={closeAttention}
+        />
       )}
 
       {noticeDetails && (

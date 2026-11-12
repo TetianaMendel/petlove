@@ -1,0 +1,104 @@
+.petCard {
+    position: relative;
+    display: flex;
+    gap: 14px;
+    padding: 12px 46px 12px 12px;
+    border: 1px solid rgba(38, 38, 38, 0.1);
+    border-radius: 20px;
+}
+
+.petImageWrapper {
+    position: relative;
+    width: 66px;
+    height: 66px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 100px;
+}
+
+.petImage {
+    object-fit: cover;
+}
+
+.petContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.petTitle {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.25;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+}
+
+.petDetails {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.petDetail {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detailLabel {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.5);
+}
+
+.detailValue {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16667;
+    letter-spacing: -0.02em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+}
+
+.deleteButton {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--color-milk);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover {
+    background-color: var(--color-dark-milk);
+}
+
+.deleteButton:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+}
+
+.deleteIcon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-yellow);
+}

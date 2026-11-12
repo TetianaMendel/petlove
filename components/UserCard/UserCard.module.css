@@ -1,0 +1,43 @@
+.userHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userBadge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 14px;
+    border-radius: 30px;
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+}
+
+.editButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--color-milk);
+    color: var(--color-yellow);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.editButton:hover {
+    background-color: var(--color-dark-milk);
+}
+
+.editButton:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+}

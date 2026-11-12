@@ -10,6 +10,7 @@ import type {
 } from "@/types/notices";
 import type { City } from "@/types/cities";
 import type { Friend } from "@/types/friends";
+import type { FullUser } from "@/types/user";
 
 export interface NewsResponse {
   results: NewsItem[];
@@ -202,4 +203,34 @@ export async function login(
 
 export async function logout(): Promise<void> {
   await axios.post("/api/auth/logout");
+}
+
+export async function fetchFullUser(): Promise<FullUser> {
+  const response = await apiInstance.get<FullUser>(
+    "/auth/current/full"
+  );
+
+  return response.data;
+}
+
+export async function removePet(id: string): Promise<void> {
+  await apiInstance.delete(`/auth/current/pets/${id}`);
+}
+
+export interface UpdateUserRequest {
+  name: string;
+  email: string;
+  phone?: string;
+  avatar?: string;
+}
+
+export async function updateUser(
+  data: UpdateUserRequest
+): Promise<FullUser> {
+  const response = await apiInstance.patch<FullUser>(
+    "/auth/current/edit",
+    data
+  );
+
+  return response.data;
 }

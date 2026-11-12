@@ -1,0 +1,58 @@
+.petsBlock {
+    width: 100%;
+}
+
+.petsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.petsTitle {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+}
+
+.addPetButton {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 16px;
+    border-radius: 30px;
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.addPetButton:hover {
+    background-color: var(--color-dark-yellow);
+}
+
+.addPetButton:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+}
+
+.addPetIcon {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+
+@media screen and (min-width: 768px) {
+    .petsTitle {
+        font-size: 18px;
+    }
+
+    .addPetButton {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}

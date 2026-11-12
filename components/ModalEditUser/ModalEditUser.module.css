@@ -1,0 +1,246 @@
+.modalEditUser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    padding: 40px 20px;
+}
+
+.modalClose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.closeIcon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-black);
+}
+
+.title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 20px;
+    margin-right: auto;
+}
+
+.form {
+    width: 100%;
+}
+
+.avatarWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.avatarPreview {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: var(--color-milk);
+    margin: 0 auto;
+}
+
+.avatarImage {
+    object-fit: cover;
+}
+
+.avatarIcon {
+    width: 40px;
+    height: 40px;
+    color: var(--color-yellow);
+}
+
+.avatarControls {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.uploadButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+    max-width: 117px;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--color-milk);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+}
+
+.uploadIcon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--color-yellow);
+}
+
+.uploadButton:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+
+.fieldsWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 21px;
+}
+
+.field {
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    height: 42px;
+    padding: 12px;
+    border: 1px solid rgba(38, 38, 38, 0.15);
+    border-radius: 30px;
+    background-color: var(--color-white);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+    color: rgba(38, 38, 38, 0.8);
+    outline: none;
+}
+
+.avatarControls .input {
+    min-width: 0;
+    padding: 13px;
+}
+
+.input::placeholder {
+    color: rgba(38, 38, 38, 0.5);
+}
+
+.input:hover,
+.input:focus {
+    border-color: var(--color-yellow);
+}
+
+.inputValid {
+    border-color: var(--color-yellow);
+}
+
+.inputError,
+.inputError:hover,
+.inputError:focus {
+    border-color: var(--color-red);
+}
+
+.error {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16667;
+    letter-spacing: -0.03em;
+    color: var(--color-red);
+}
+
+.button {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.buttonSub {
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+}
+
+.button:not(:disabled):hover,
+.button:not(:disabled):focus {
+    background-color: var(--color-dark-yellow);
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+@media screen and (min-width: 768px) {
+    .modalEditUser {
+        padding: 50px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .avatarPreview {
+        width: 86px;
+        height: 86px;
+    }
+
+    .avatarIcon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .uploadButton {
+        max-width: 146px;
+        padding: 12px;
+        gap: 8px;
+        font-size: 14px;
+    }
+
+    .uploadIcon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .fieldsWrap {
+        gap: 14px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+    }
+
+    .input {
+        height: 52px;
+        padding: 16px;
+        font-size: 16px;
+    }
+
+    .avatarControls .input {
+        padding: 12px;
+    }
+
+    .button {
+        padding: 16px 0;
+        font-size: 16px;
+    }
+}

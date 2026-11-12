@@ -46,3 +46,32 @@
     outline: 2px solid var(--color-white);
     outline-offset: 3px;
 }
+
+.profile {
+    align-self: flex-start;
+    flex-shrink: 0;
+    width: 114px;
+    height: 42px;
+    min-height: 42px;
+    padding: 12px 28px;
+    background-color: var(--color-milk);
+    color: var(--color-yellow);
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+}
+
+.profile:hover {
+    background-color: var(--color-dark-milk);
+}
+
+@media screen and (min-width: 768px) {
+    .profile {
+        width: 136px;
+        height: 50px;
+        min-height: 50px;
+        padding: 15px 35px;
+        font-size: 16px;
+        line-height: 1.25;
+    }
+}
