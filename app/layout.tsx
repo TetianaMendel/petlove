@@ -7,6 +7,7 @@ import AuthInitializer from "@/components/AuthInitializer/AuthInitializer";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import StoreProvider from "@/lib/store/StoreProvider";
 import { Toaster } from "react-hot-toast";
+import Loader from "@/components/Loader/Loader";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
             <AuthInitializer />
             <Header />
             <main>{children}</main>
+            <Loader />
             <Toaster position="top-right" />
           </TanStackProvider>
         </StoreProvider>
