@@ -213,6 +213,25 @@ export async function fetchFullUser(): Promise<FullUser> {
   return response.data;
 }
 
+export interface AddPetRequest {
+  title: string;
+  name: string;
+  imgURL: string;
+  species: string;
+  birthday: string;
+  sex: string;
+}
+
+
+export async function addPet(
+  data: AddPetRequest
+): Promise<void> {
+  await apiInstance.post(
+    "/auth/current/pets/add",
+    data
+  );
+}
+
 export async function removePet(id: string): Promise<void> {
   await apiInstance.delete(`/auth/current/pets/${id}`);
 }

@@ -1,11 +1,15 @@
+
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FiTrash2 } from "react-icons/fi";
+import { LuPawPrint } from "react-icons/lu";
+
 import { useAppSelector } from "@/lib/store/hooks";
 import { removePet } from "@/lib/clientApi";
 import type { Pet } from "@/types/pet";
+
 import styles from "./PetsItem.module.css";
 
 interface PetsItemProps {
@@ -15,6 +19,10 @@ interface PetsItemProps {
 export default function PetsItem({ pet }: PetsItemProps) {
   const queryClient = useQueryClient();
   const user = useAppSelector((state) => state.auth.user);
+
+  const [failedImageUrl, setFailedImageUrl] = useState<string | null>(
+    null
+  );
 
   const { mutate: deletePet, isPending } = useMutation({
     mutationFn: removePet,
@@ -39,16 +47,27 @@ export default function PetsItem({ pet }: PetsItemProps) {
     deletePet(pet._id);
   };
 
+  const showImage =
+    Boolean(pet.imgURL) && failedImageUrl !== pet.imgURL;
+
   return (
     <article className={styles.petCard}>
       <div className={styles.petImageWrapper}>
-        <Image
-          src={pet.imgURL}
-          alt={pet.name}
-          fill
-          className={styles.petImage}
-          sizes="66px"
-        />
+        {showImage ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={pet.imgURL}
+            alt={pet.name}
+            className={styles.petImage}
+            onError={() => setFailedImageUrl(pet.imgURL)}
+          />
+        ) : (
+          <LuPawPrint
+            size={32}
+            color="#f6b83d"
+            aria-label="Pet photo unavailable"
+          />
+        )}
       </div>
 
       <div className={styles.petContent}>
@@ -57,7 +76,9 @@ export default function PetsItem({ pet }: PetsItemProps) {
         <ul className={styles.petDetails}>
           <li className={styles.petDetail}>
             <span className={styles.detailLabel}>Name</span>
-            <span className={styles.detailValue}>{pet.name}</span>
+            <span className={styles.detailValue}>
+              {pet.name}
+            </span>
           </li>
 
           <li className={styles.petDetail}>

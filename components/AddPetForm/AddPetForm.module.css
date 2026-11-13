@@ -1,0 +1,355 @@
+.formWrapper {
+    width: 100%;
+    background-color: var(--color-white);
+    border-radius: 30px;
+    padding: 28px 20px 20px;
+}
+
+.titleWrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.description {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.02em;
+    color: rgba(43, 43, 42, 0.4);
+}
+
+/* Form layout */
+
+.fieldsWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Pet sex */
+
+.sexField {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.optionsList {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.sexOption {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.sexInput {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.sexIcon {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+
+.female {
+    background-color: rgba(244, 63, 94, 0.1);
+    color: #f43f5e;
+}
+
+.male {
+    background-color: rgba(84, 168, 255, 0.1);
+    color: #54a8ff;
+}
+
+.multiple {
+    background-color: rgba(246, 184, 61, 0.1);
+    color: #f6b83d;
+}
+
+.female:has(.sexInput:checked) {
+    background-color: #f43f5e;
+}
+
+.male:has(.sexInput:checked) {
+    background-color: #54a8ff;
+}
+
+.multiple:has(.sexInput:checked) {
+    background-color: #f6b83d;
+}
+
+.sexOption:has(.sexInput:checked) .sexIcon {
+    color: var(--color-white);
+}
+
+.sexOption:has(.sexInput:focus-visible) {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+}
+
+/* Pet avatar */
+
+.avatarWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.avatarPreview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: 68px;
+    margin: 0 auto;
+    border-radius: 100px;
+    overflow: hidden;
+    background-color: var(--color-milk);
+}
+
+.avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pawIcon {
+    width: 34px;
+    height: 34px;
+    color: var(--color-yellow);
+}
+
+.avatarControls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.uploadButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-shrink: 0;
+    min-height: 36px;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--color-milk);
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+    cursor: pointer;
+}
+
+.uploadIcon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-yellow);
+}
+
+/* Form fields */
+
+.petFields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.field {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.input {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    padding: 12px;
+    border: 1px solid rgba(38, 38, 38, 0.15);
+    border-radius: 30px;
+    background-color: transparent;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+    color: var(--color-black);
+    outline: none;
+}
+
+.input::placeholder {
+    color: rgba(38, 38, 38, 0.5);
+}
+
+.input:hover,
+.input:focus {
+    border-color: var(--color-yellow);
+}
+
+.inputError,
+.inputError:hover,
+.inputError:focus {
+    border-color: var(--color-red);
+}
+
+.error {
+    margin-top: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16667;
+    letter-spacing: -0.03em;
+    color: var(--color-red);
+}
+
+.avatarControls .input {
+    flex: 1;
+    height: 36px;
+    padding: 9px;
+}
+
+.wrapBthD_Type {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.wrapBthD_Type>.field {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Species select */
+
+.speciesSelect {
+    position: relative;
+    width: 100%;
+}
+
+.speciesInput {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 36px;
+    cursor: pointer;
+}
+
+.speciesArrow {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--color-black);
+    pointer-events: none;
+}
+
+/* Buttons */
+
+.buttonsWrap {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 31px;
+}
+
+.button {
+    width: 100%;
+    max-width: 100px;
+    padding: 12px 0;
+    border: none;
+    border-radius: 30px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 250ms ease;
+}
+
+.buttonBack {
+    background-color: rgba(38, 38, 38, 0.05);
+    color: var(--color-black);
+}
+
+.buttonBack:hover {
+    background-color: rgba(38, 38, 38, 0.1);
+}
+
+.buttonSub {
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+}
+
+.buttonSub:hover {
+    background-color: var(--color-dark-yellow);
+}
+
+.button:focus-visible,
+.uploadButton:focus-visible {
+    outline: 2px solid var(--color-yellow);
+    outline-offset: 3px;
+}
+
+.button:disabled,
+.uploadButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+    .avatarPreview {
+        width: 86px;
+        height: 86px;
+    }
+
+    .pawIcon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .uploadIcon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .error {
+        font-size: 14px;
+    }
+}

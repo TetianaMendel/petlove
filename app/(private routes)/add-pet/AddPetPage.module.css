@@ -1,0 +1,38 @@
+.page {
+    padding: 28px 0 20px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.imageWrapper {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .page {
+        padding: 58px 0 32px;
+    }
+
+    .wrapper {
+        gap: 16px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .wrapper {
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: space-between;
+        gap: 32px;
+    }
+
+    .imageWrapper {
+        width: 592px;
+        flex-shrink: 0;
+    }
+}

@@ -9,15 +9,26 @@
 
 .petImageWrapper {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 66px;
     height: 66px;
+    min-width: 66px;
+    min-height: 66px;
     flex-shrink: 0;
     overflow: hidden;
     border-radius: 100px;
+    background-color: var(--color-milk);
 }
 
 .petImage {
+    display: block;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
+    border-radius: 100px;
 }
 
 .petContent {
