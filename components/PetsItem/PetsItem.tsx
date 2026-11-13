@@ -2,19 +2,39 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FiTrash2 } from "react-icons/fi";
 import { LuPawPrint } from "react-icons/lu";
-
 import { useAppSelector } from "@/lib/store/hooks";
 import { removePet } from "@/lib/clientApi";
 import type { Pet } from "@/types/pet";
-
 import styles from "./PetsItem.module.css";
 
 interface PetsItemProps {
   pet: Pet;
 }
+
+const ALLOWED_IMAGE_HOSTS = [
+  "petlove.b.goit.study",
+  "www.nytimes.com",
+  "media4.giphy.com",
+  "ftp.goit.study",
+  "res.cloudinary.com",
+];
+
+const isAllowedImageHost = (url: string): boolean => {
+  try {
+    const parsedUrl = new URL(url);
+
+    return (
+      parsedUrl.protocol === "https:" &&
+      ALLOWED_IMAGE_HOSTS.includes(parsedUrl.hostname)
+    );
+  } catch {
+    return false;
+  }
+};
 
 export default function PetsItem({ pet }: PetsItemProps) {
   const queryClient = useQueryClient();
@@ -54,10 +74,13 @@ export default function PetsItem({ pet }: PetsItemProps) {
     <article className={styles.petCard}>
       <div className={styles.petImageWrapper}>
         {showImage ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
+            key={pet.imgURL}
             src={pet.imgURL}
             alt={pet.name}
+            width={66}
+            height={66}
+            unoptimized={!isAllowedImageHost(pet.imgURL)}
             className={styles.petImage}
             onError={() => setFailedImageUrl(pet.imgURL)}
           />
