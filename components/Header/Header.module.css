@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-height: 32px;
 }
 
 .logo {
@@ -88,6 +89,11 @@
 /* Tablet */
 
 @media screen and (min-width: 768px) {
+    
+    .container {
+        min-height: 50px;
+    }
+
     .logo {
         font-size: 28px;
     }
@@ -158,6 +164,7 @@
         position: relative;
         padding-left: 64px;
         padding-right: 64px;
+        min-height: 50px;
     }
 
     .navigation {
