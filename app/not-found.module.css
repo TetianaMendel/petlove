@@ -1,0 +1,143 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    padding-top: 28px;
+    padding-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 712px;
+    border-radius: 30px;
+    gap: 20px;
+    background-color: var(--color-yellow);
+}
+
+/* 404 */
+
+.code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.codeNumber {
+    margin: 0;
+    font-weight: 800;
+    font-size: 120px;
+    line-height: 1;
+    color: var(--color-white);
+}
+
+/* Cat image */
+
+.photoWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 109px;
+    height: 109px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.photo {
+    object-fit: contain;
+}
+
+/* Text and button */
+
+.textWrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.title {
+    margin: 0;
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    text-align: center;
+}
+
+.homeLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.03em;
+    color: var(--color-yellow);
+    background-color: var(--color-milk);
+    text-decoration: none;
+    transition: background-color 180ms ease;
+}
+
+.homeLink:hover,
+.homeLink:focus-visible {
+    background-color: var(--color-dark-milk);
+}
+
+/* Tablet */
+
+@media screen and (min-width: 768px) {
+    .page {
+        padding-top: 58px;
+        padding-bottom: 32px;
+    }
+
+    .content {
+        min-height: 878px;
+        border-radius: 60px;
+        gap: 40px;
+    }
+
+    .code {
+        gap: 0;
+    }
+
+    .codeNumber {
+        font-size: 300px;
+    }
+
+    .photoWrap {
+        width: 280px;
+        height: 280px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .homeLink {
+        padding: 14px 30px;
+        font-size: 16px;
+    }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1280px) {
+    .page {
+        padding-top: 38px;
+        padding-bottom: 32px;
+    }
+
+    .content {
+        min-height: 654px;
+    }
+}
