@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🐾 PetLove
 
-## Getting Started
+**PetLove** is a responsive web application designed to help people find pets, explore adoption listings, and discover useful information about animal care.
 
-First, run the development server:
+Users can browse available pets, search and filter listings, save their favorite animals, view detailed information, and manage their personal profiles.
+
+🔗 **Live Demo:** Coming soon
+
+---
+
+## ✨ Features
+
+- **User Authentication** — registration, login, logout, and session restoration.
+- **Protected Routes** — authenticated access to profile and pet management pages.
+- **Pet Listings** — browse animals with photos and detailed information.
+- **Search & Filtering** — search and filter available listings.
+- **Sorting & Pagination** — organize listings and navigate through results.
+- **Favorites** — save and manage favorite pets.
+- **Pet Details** — view additional information about animals.
+- **User Profile** — manage personal information and uploaded pets.
+- **Pet Management** — add and remove pets from a personal profile.
+- **Image Upload** — upload pet photos using Cloudinary.
+- **News** — browse and search pet-related articles.
+- **Our Friends** — explore partner organizations.
+- **Responsive Design** — mobile, tablet, and desktop layouts.
+- **Loading States** — global loading indicator for asynchronous requests.
+- **Error Handling** — custom 404 page, error boundary, and toast notifications.
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- Next.js (App Router)
+- React
+- TypeScript
+- CSS Modules
+- Redux Toolkit
+- React Redux
+- TanStack Query
+
+### Forms & Validation
+
+- React Hook Form
+- Yup
+- @hookform/resolvers
+
+### API & Utilities
+
+- Axios
+- React Hot Toast
+- React Select
+- React Paginate
+- React Icons
+- Cloudinary
+
+### Backend
+
+- External REST API
+- Next.js API routes
+- HTTP-only cookie-based authentication
+
+## 🏗️ Architecture
+
+The application uses the Next.js App Router and separates routing, reusable UI components, API requests, and state management.
+
+- **App Router** — file-based routing and layouts.
+- **Reusable Components** — shared navigation, forms, cards, modals, and loaders.
+- **API Layer** — HTTP requests using Axios.
+- **Redux Toolkit** — authentication and global client state.
+- **TanStack Query** — server-state management, caching, queries, and mutations.
+- **React Hook Form & Yup** — form handling and validation.
+- **CSS Modules** — component-scoped responsive styling.
+- **Next.js Image** — image rendering and optimization.
+- **Error Boundaries** — error handling and retry functionality.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+**1. Clone the repository:**
+
+```bash
+git clone https://github.com/TetianaMendel/petlove.git
+```
+
+**2. Navigate to the project directory:**
+
+```bash
+cd petlove
+```
+
+**3. Install dependencies:**
+
+```bash
+npm install
+```
+
+**4. Configure environment variables:**
+
+Create a `.env.local` file in the project root and configure the environment variables required by the application.
+
+Keep private credentials out of version control.
+
+**5. Start the development server:**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**6. Open the application:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📜 Available Scripts
 
-## Learn More
+| Command         | Description                  |
+| --------------- | ---------------------------- |
+| `npm run dev`   | Start the development server |
+| `npm run build` | Create a production build    |
+| `npm run start` | Start the production server  |
+| `npm run lint`  | Run ESLint                   |
 
-To learn more about Next.js, take a look at the following resources:
+## 📱 Responsive Design
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+PetLove supports responsive layouts for mobile, tablet, and desktop devices.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The interface follows the provided Figma design.
 
-## Deploy on Vercel
+## 🔐 Authentication
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The application uses HTTP-only cookies for session management and Redux Toolkit for client-side authentication state.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Authentication is restored through `/api/auth/current`.
+
+Private routes such as `/profile` and `/add-pet` are accessible only to authenticated users.
+
+## 👩‍💻 Author
+
+**Tetiana Mendel**
+
+[GitHub](https://github.com/TetianaMendel)
+
+## 🎨 Design
+
+[Figma — PetLove](https://www.figma.com/design/RGEwWRPHsF41Vcqibgd2NN/)
