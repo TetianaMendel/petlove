@@ -1,0 +1,29 @@
+.error {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 16px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.text {
+    margin-bottom: 24px;
+    font-size: 16px;
+}
+
+.button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.button:hover {
+    background-color: var(--color-dark-yellow);
+}
